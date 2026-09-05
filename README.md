@@ -2,7 +2,7 @@
 
 A continual-learning framework that combines **Fisher-based adaptive consolidation** with **intentional forgetting** to reduce catastrophic forgetting without replay memory or architectural expansion.
 
-This repository contains the implementation and experimental results from the **CpE 620 Final Project, Spring 2026**, evaluated on **MNIST, Split CIFAR-100, and CORe50 New Classes (NC)**.
+This repository contains the implementation and experimental results from a **Spring 2026 continual-learning project**, evaluated on **MNIST, Split CIFAR-100, and CORe50 New Classes (NC)**.
 
 ## Overview
 
@@ -105,6 +105,8 @@ The reordered experiment was used to examine sensitivity to task ordering.
 ```text
 Adaptive-Consolidation-Intentional-Forgetting/
 ├── README.md
+├── requirements.txt
+├── .gitignore
 ├── notebooks/
 │   ├── README.md
 │   ├── 01_MNIST_Proof_of_Concept.ipynb
@@ -129,17 +131,53 @@ Adaptive-Consolidation-Intentional-Forgetting/
 - No replay buffer is required.
 - The network does not expand as additional tasks are introduced.
 - CORe50 experiments use a seven-task subset of the New Classes scenario.
-- The notebooks retain the saved experimental outputs from the original Spring 2026 project.
+- The notebooks retain the saved experimental outputs from the original Spring 2026 experiments.
+
+## Dataset Availability
+
+MNIST and CIFAR-100 are loaded through `torchvision`.
+
+The CORe50 experiments require a local copy of the CORe50 dataset. The dataset is not included in this repository due to its size and distribution requirements. The notebooks retain the saved outputs from the original Spring 2026 experiments, allowing the reported CORe50 results to be inspected without rerunning the experiments.
+
+## Installation
+
+Clone the repository and install the required Python packages:
+
+```bash
+git clone https://github.com/nih00002/Adaptive-Consolidation-Intentional-Forgetting.git
+cd Adaptive-Consolidation-Intentional-Forgetting
+pip install -r requirements.txt
+```
+
+Then launch Jupyter:
+
+```bash
+jupyter notebook
+```
+
+The experimental notebooks are located in the `notebooks/` directory.
+
+> **Note:** Running the CORe50 notebooks additionally requires local access to the CORe50 dataset.
 
 ## Limitations
 
-The experiments are **task-aware**, meaning that task identity is available when selecting the appropriate classification head. The results should therefore be interpreted as an investigation of intentional forgetting as an augmentation to EWC-style consolidation rather than as a claim of state-of-the-art continual-learning performance.
+The experiments are **task-aware**, meaning that task identity is available when selecting the appropriate classification head.
 
-Future extensions could investigate task-agnostic or class-incremental settings, longer task sequences, deeper architectures such as ResNet or Vision Transformers, and adaptive selection of the consolidation and forgetting hyperparameters.
+The results should therefore be interpreted as an investigation of intentional forgetting as an augmentation to EWC-style consolidation rather than as a claim of state-of-the-art continual-learning performance.
 
+The experiments also cover a limited number of tasks and primarily use convolutional neural network architectures.
+
+Future extensions could investigate:
+
+- Task-agnostic or class-incremental continual learning
+- Longer task sequences
+- Deeper architectures such as ResNet
+- Vision Transformer-based continual learning
+- Adaptive selection of `λ`, `η`, and `p`
+- Additional continual-learning benchmarks
 
 ## Status
 
 **Completed — Spring 2026**
 
-This repository preserves the original experimental methodology and reported results while organizing the implementation for reproducibility and portfolio presentation.
+This repository preserves the original experimental methodology, implementation, and reported results for portfolio presentation and future reference.
