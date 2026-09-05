@@ -1,0 +1,23 @@
+# Jupyter
+.ipynb_checkpoints/
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Datasets
+data/
+core50_data/
+
+# PyTorch model files
+*.pt
+*.pth
+
+# Operating system files
+.DS_Store
+Thumbs.db
